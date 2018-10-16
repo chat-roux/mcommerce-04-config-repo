@@ -15,9 +15,9 @@ spring:
     password: "tcharou"
     driverClassName: "org.mariadb.jdbc.Driver"
     sql-script-encoding: UTF-8
-    data: "classpath:import.sql"
     #initialization-mode: always
     #initialize: true
+    #data: "classpath:import.sql"
   # ---- (02.02.)SPRING-JPA-CONFIGURATION ----
   jpa:
     show-sql: true
@@ -39,7 +39,7 @@ management:
     web:
       exposure:
         include: "*"
-    
+
 ######################################################
 # ---- (04.)EUREKA-CONFIGURATION ----
 ######################################################
