@@ -2,7 +2,7 @@
 # ---- (01.)SERVER-PORT-CONFIGURATION ----
 ######################################################
 #server:
-#  port: 9001
+#  port: 9010
 
 ######################################################
 # ---- (02.)SPRING-CONFIGURATION ----
@@ -13,17 +13,16 @@ spring:
     url: "jdbc:mariadb://localhost:3306/produitdb?createDatabaseIfNotExist=true"
     username: "root"
     password: "tcharou"
-    #driverClassName: "com.mysql.cj.jdbc.Driver"
     driverClassName: "org.mariadb.jdbc.Driver"
     sql-script-encoding: UTF-8
+    data: "classpath:import.sql"
     #initialization-mode: always
     #initialize: true
-    #data: "classpath:data.sql"
   # ---- (02.02.)SPRING-JPA-CONFIGURATION ----
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: "create"
+      ddl-auto: "update"
     properties:
       hibernate:
         dialect: "org.hibernate.dialect.MariaDB53Dialect"
