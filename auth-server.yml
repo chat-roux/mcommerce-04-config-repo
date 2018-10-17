@@ -58,7 +58,7 @@ spring:
     #url: "jdbc:mysql://localhost:33306/oauth2db?useSSL=false"
     #username: "oauth2UserName"
     #password: "oauth2Password"
-    #driver-class-name: "com.mysql.jdbc.Driver"
+    #driver-class-name: "org.mariadb.jdbc.Driver"
     #schema: "classpath:/script/schema.sql"
     #data: "classpath:/script/data.sql"
 
@@ -70,4 +70,3 @@ security:
     client:
       client-id: "acme"
       client-secret: "secret"
-

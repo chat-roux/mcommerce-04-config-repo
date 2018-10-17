@@ -66,10 +66,4 @@ security:
   oauth2:
     resource:
       loadBalanced: true
-      userInfoUri: "http://localhost:9999/user"
-
-######################################################
-# ---- (07.)MY CONFIGURATION ----
-######################################################
-ma-config:
-  produitNombreMax: 2
+      userInfoUri: "http://localhost:9104/user"
