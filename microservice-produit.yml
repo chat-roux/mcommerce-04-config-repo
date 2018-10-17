@@ -1,35 +1,14 @@
 ######################################################
-# ---- (01.)SERVER-PORT-CONFIGURATION ----
+# ---- (01.)LOGGING-CONFIGURATION ----
+######################################################
+logging:
+  config: "classpath:log4j2-spring.xml"
+
+######################################################
+# ---- (02.)SERVER-PORT-CONFIGURATION ----
 ######################################################
 #server:
 #  port: 9010
-
-######################################################
-# ---- (02.)SPRING-CONFIGURATION ----
-######################################################
-spring:
-  # ---- (02.01.)SPRING-DATASOURCE-CONFIGURATION ----
-  datasource:
-    url: "jdbc:mariadb://localhost:3306/produitdb?createDatabaseIfNotExist=true"
-    username: "root"
-    password: "tcharou"
-    driver-class-name: "org.mariadb.jdbc.Driver"
-    sql-script-encoding: UTF-8
-    #initialization-mode: always
-    #initialize: true
-    #data: "classpath:import.sql"
-  # ---- (02.02.)SPRING-JPA-CONFIGURATION ----
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: "create"
-    properties:
-      hibernate:
-        dialect: "org.hibernate.dialect.MariaDB53Dialect"
-  # ---- (02.03.)SPRING-H2-CONFIGURATION ----
-  #h2:
-  #  console:
-  #    enabled: true
 
 ######################################################
 # ---- (03.)ACTUATOR-CONFIGURATION ----
@@ -43,19 +22,54 @@ management:
 ######################################################
 # ---- (04.)EUREKA-CONFIGURATION ----
 ######################################################
-#eureka:
-#  client:
-#    serviceUrl:
-#      defaultZone: "http://localhost:9102/eureka/"
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: "http://localhost:9102/eureka/"
 
 ######################################################
-# ---- (05.)LOGGING-CONFIGURATION ----
+# ---- (05.)SPRING-CONFIGURATION ----
 ######################################################
-logging:
-  config: "classpath:log4j2-spring.xml"
+spring:
+  # ---- (05.01.)SPRING-SECURITY-CONFIGURATION ----
+  security:
+    user:
+      name: "utilisateur"
+      password: "mdp"
+  # ---- (05.02.)SPRING-DATASOURCE-CONFIGURATION ----
+  datasource:
+    url: "jdbc:mariadb://localhost:3306/produitdb?createDatabaseIfNotExist=true"
+    username: "root"
+    password: "tcharou"
+    driver-class-name: "org.mariadb.jdbc.Driver"
+    sql-script-encoding: UTF-8
+    #initialization-mode: always
+    #initialize: true
+    #data: "classpath:import.sql"
+  # ---- (05.03.)SPRING-JPA-CONFIGURATION ----
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: "create"
+    properties:
+      hibernate:
+        dialect: "org.hibernate.dialect.MariaDB53Dialect"
+  # ---- (02.03.)SPRING-H2-CONFIGURATION ----
+  #h2:
+  #  console:
+  #    enabled: true
 
 ######################################################
-# ---- (06.)MY CONFIGURATION ----
+# ---- (06.)SECURITY-CONFIGURATION ----
+######################################################
+security:
+  oauth2:
+    resource:
+      loadBalanced: true
+      userInfoUri: "http://localhost:9999/user"
+
+######################################################
+# ---- (07.)MY CONFIGURATION ----
 ######################################################
 ma-config:
   produitNombreMax: 2
