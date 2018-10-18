@@ -52,10 +52,10 @@ zuul:
     socket-timeout-millis: 5000
     connect-timeout-millis: 5000
   routes:
-    auth:
-      path: /auth-path/**
+    uaa:
+      path: /uaa/**
       sensitiveHeaders:
       serviceId: auth-server
     produit:
-      path: /produit-path/**
+      path: /produit/**
       serviceId: microservice-produit
