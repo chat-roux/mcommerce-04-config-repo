@@ -1,0 +1,75 @@
+######################################################
+# ---- (01.)LOGGING-CONFIGURATION ----
+######################################################
+logging:
+  config: "classpath:log4j2-spring.xml"
+
+######################################################
+# ---- (02.)SERVER-PORT-CONFIGURATION ----
+######################################################
+server:
+  port: 9103
+
+######################################################
+# ---- (03.)ACTUATOR-CONFIGURATION ----
+######################################################
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+######################################################
+# ---- (04.)EUREKA-CONFIGURATION ----
+######################################################
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: "http://localhost:9102/eureka/"
+
+######################################################
+# ---- (05.)RIBBON-CONFIGURATION ----
+######################################################
+ribbon:
+  ConnectTimeout: 50000
+  ReadTimeout: 50000
+
+######################################################
+# ---- (06.)HYSTRIX-CONFIGURATION ----
+######################################################
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
+
+######################################################
+# ---- (07.)ZUUL-CONFIGURATION ----
+######################################################
+zuul:
+  host:
+    socket-timeout-millis: 5000
+    connect-timeout-millis: 5000
+  routes:
+    uaa:
+      path: /uaa/**
+      sensitiveHeaders:
+      serviceId: auth-server
+    produit:
+      path: /produit/**
+      serviceId: microservice-produit
+
+security:
+  user:
+    name: root
+    password: password
+  oauth2:
+    client:
+      accessTokenUri: http://localhost:8765/uua/oauth/token
+      userAuthorizationUri: http://localhost:8765/uua/oauth/authorize
+      clientAuthenticationScheme: form
+    resource:
+      userInfoUri: http://localhost:8765/uaa/user
+      preferTokenInfo: false  
+  sessions: ALWAYS 
