@@ -55,21 +55,24 @@ zuul:
     uaa:
       path: /uaa/**
       sensitiveHeaders:
-      serviceId: auth-server
+      serviceId: authServer
     produit:
       path: /produit/**
-      serviceId: microservice-produit
+      serviceId: produitServer
 
+######################################################
+# ---- (08.)SECURITY-CONFIGURATION ----
+######################################################
 security:
-  user:
-    name: root
-    password: password
+  #user:
+    #name: root
+    #password: password
   oauth2:
     client:
-      accessTokenUri: http://localhost:8765/uua/oauth/token
-      userAuthorizationUri: http://localhost:8765/uua/oauth/authorize
+      accessTokenUri: http://localhost:9104/uua/oauth/token
+      userAuthorizationUri: http://localhost:9104/uua/oauth/authorize
       clientAuthenticationScheme: form
     resource:
-      userInfoUri: http://localhost:8765/uaa/user
+      userInfoUri: http://localhost:9104/uaa/user
       preferTokenInfo: false  
-  sessions: ALWAYS 
+  sessions: always 
